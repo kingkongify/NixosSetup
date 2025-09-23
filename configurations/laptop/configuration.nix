@@ -9,6 +9,7 @@
     ../../modules/laptop/filesystems.nix
     ../../modules/laptop/networking.nix
     ../../modules/laptop/users.nix
+    ../../modules/global/virtualization.nix
     ../../modules/global/bootloader.nix
     ../../modules/global/locale-time.nix
     ../../modules/global/sudo.nix
@@ -20,17 +21,30 @@
   # System state version
   system.stateVersion = "25.05";
 
-  ## System-wide packages
-  environment.systemPackages = with pkgs; [
-    # Core packages
-  ] ++ (packages.core pkgs)
-    ++ (packages.system pkgs)
-    ++ (packages.desktop pkgs)
-    ++ (packages.utilities pkgs)
-    ++ (packages.hyprland pkgs)
-    ++ (packages.dev pkgs)
-    ++ (packages.flatpak pkgs); # your new pkgs-flatpak.nix
+  # --- HOME MANAGER (apply user's home as part of system activation) ---
+  # Ensure the home-manager module is included in your modules list (you already do).
+  # Tell it to manage the "kingkongify" user and load the home.nix module from the flake.
+  home-manager.users.kingkongify = {
+    # Use the pkgs that NixOS provides in this evaluation
+    pkgs = pkgs;
 
-  # Optional: machine-specific settings
-  networking.hostName = "desktop-nixos";
+    # modules is a list of Home Manager modules (your home.nix is one)
+    modules = [
+      ../../home/kingkongify/home.nix
+      ../../home/kingkongify/flatpak-apps.nix
+    ];
+
+    # optionally: set stateVersion if needed for Home Manager itself
+    # stateVersion = "25.05";
+  };
+
+  ## System-wide packages
+environment.systemPackages = concatLists [
+  (if packages ? core then packages.core pkgs else [])
+  (if packages ? desktop then packages.desktop pkgs else [])
+  (if packages ? utilities then packages.utilities pkgs else [])
+  (if packages ? hyprland then packages.hyprland pkgs else [])
+  (if packages ? dev then packages.dev pkgs else [])
+];
+
 }

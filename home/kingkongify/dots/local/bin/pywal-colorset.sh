@@ -1,10 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 
 # Paths
 WAL_COLORS="$HOME/.cache/wal/colors.json"
 ROFI_COLORS="$HOME/.config/rofi/colors.rasi"
-DISCORD_THEME="$HOME/.var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight.theme.css"
-TEMP_THEME="$HOME/.var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight/midnight.theme.tmp.css"
 
 ### --- Generate Rofi Colors --- ###
 jq -r '
@@ -59,85 +58,5 @@ jq -r '
 " ' "$WAL_COLORS" > "$ROFI_COLORS"
 
 
-### --- Generate Discord Colors --- ###
-jq -r '
-  .colors | "
-:root {
-    --text-1: \(.color15);
-    --text-2: \(.color7);
-    --text-3: \(.color8);
-    --text-4: \(.color2);
-    --text-5: \(.color3);
 
-    --bg-1: \(.color0);
-    --bg-2: \(.color0);
-    --bg-3: \(.color0);
-    --bg-4: \(.color0);
-
-    --hover: \(.color1)33;
-    --active: \(.color2)55;
-    --active-2: \(.color2)77;
-    --message-hover: \(.color7)33;
-
-    --accent-1: \(.color4);
-    --accent-2: \(.color5);
-    --accent-3: \(.color6);
-    --accent-4: \(.color2);
-    --accent-5: \(.color3);
-    --accent-new: \(.color5);
-
-    --online: \(.color2);
-    --dnd: \(.color1);
-    --idle: \(.color3);
-    --streaming: \(.color6);
-    --offline: \(.color8);
-
-    --border-light: \(.color7);
-    --border: \(.color8);
-    --border-hover: \(.color15);
-    --button-border: \(.color8);
-
-    --red-1: \(.color1);
-    --red-2: \(.color1);
-    --red-3: \(.color1);
-    --red-4: \(.color1);
-    --red-5: \(.color1);
-
-    --green-1: \(.color2);
-    --green-2: \(.color2);
-    --green-3: \(.color2);
-    --green-4: \(.color2);
-    --green-5: \(.color2);
-
-    --blue-1: \(.color4);
-    --blue-2: \(.color4);
-    --blue-3: \(.color4);
-    --blue-4: \(.color4);
-    --blue-5: \(.color4);
-
-    --yellow-1: \(.color3);
-    --yellow-2: \(.color3);
-    --yellow-3: \(.color3);
-    --yellow-4: \(.color3);
-    --yellow-5: \(.color3);
-
-    --purple-1: \(.color6);
-    --purple-2: \(.color6);
-    --purple-3: \(.color6);
-    --purple-4: \(.color6);
-    --purple-5: \(.color6);
-}
-" ' "$WAL_COLORS" > "$TEMP_THEME"
-
-# Replace only the :root block in Discord theme
-awk '
-    BEGIN {in_block=0}
-    /^:root[[:space:]]*{/ {print; system("cat " ENVIRON["TEMP_THEME"]); in_block=1; next}
-    in_block && /^}/ {in_block=0; next}
-    !in_block {print}
-' "$DISCORD_THEME" > "$DISCORD_THEME.tmp"
-
-mv "$DISCORD_THEME.tmp" "$DISCORD_THEME"
-rm "$TEMP_THEME"
-
-notify-send "Pywal Colorset" "Rofi + Discord themes updated!"
+notify-send "Pywal Colorset" "Rofi theme updated!"

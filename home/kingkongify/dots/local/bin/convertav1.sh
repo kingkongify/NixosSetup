@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 
 # === CONFIG ===
 INPUT_DIR="$HOME/Videos/Wallpapers/Live"

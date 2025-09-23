@@ -1,62 +1,49 @@
 { pkgs, ... }:
 
-{
-  environment.systemPackages = with pkgs; [
-    #################################
-    ## Hyprland Desktop Experience ##
-    #################################
-    rofi
-    kitty
-    waybar
-    eww
+[
+  pkgs.rofi
+  pkgs.kitty
+  pkgs.waybar
+  pkgs.eww
+  pkgs.pywal
+  pkgs.python311Packages.colorthief
+  pkgs.swww
+  pkgs.mpvpaper
 
 
-    ######################
-    ## Theming & Colors ##
-    ######################
-    pywal
-    python311Packages.colorthief
-    swww        # wallpaper daemon
-    mpvpaper    # live wallpapers
-    
-    ###################################
-    ## Screenshot / Screen Recording ##
-    ###################################
-    grim
-    slurp
-    wl-clipboard
-    swappy
+  pkgs.grim
+  pkgs.slurp
+  pkgs.wl-clipboard
+  pkgs.swappy
+  pkgs.pavucontrol
+  pkgs.brightnessctl
+  pkgs.dunst
+  pkgs.mpv
+  pkgs.jamesdsp
+  pkgs.ffmpeg-full
+  pkgs.psmisc     # killall, fuser, etc.
+  pkgs.procps     # pkill, pgrep, top, uptime, etc.
 
-    ######################
-    ## System Utilities ##
-    ######################
-    pavucontrol     # audio control GUI
-    brightnessctl   # backlight control
-    dunst           # notification daemon
-    mpv
+  #file-manager
+  pkgs.xfce.thunar
+  pkgs.ranger
+  pkgs.yazi
+  pkgs.p7zip
+  pkgs.unzip
+  pkgs.xz
+  pkgs.lrzip
+  pkgs.zstd
 
-    ## File Management
-    xfce.thunar     # graphical file manager
-    ranger          # terminal file manager (ncurses)
-    yazi            # modern TUI file manager
-    p7zip
-    unzip
-    xz
-    lrzip
-    zstd
-
-    ## CLI Productivity / Monitoring
-    fastfetch
-    neofetch
-    htop
-    btop
-    lsof
-    pciutils
-    usbutils
-    ranger
-    eza
-    bat
-    yazi
-    cava
-  ];
-}
+  #cli
+  pkgs.fastfetch
+  pkgs.neofetch
+  pkgs.htop
+  pkgs.btop
+  pkgs.lsof
+  pkgs.pciutils
+  pkgs.usbutils
+  pkgs.eza
+  pkgs.bat
+  pkgs.cava
+  pkgs.libnotify
+]
