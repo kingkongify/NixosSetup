@@ -1,0 +1,32 @@
+;; GPU Widget - circular progress with icon
+(defpoll gpu_percent :interval "0.5s" "bash -lc '/home/kingkongify/.config/eww/scripts/system-stats/gpu.sh'" )
+
+;; Background circular progress (gray, static 100%)
+(defwidget gpu-progress-bg []
+  (circular-progress
+    :value 100
+    :thickness 3
+    :class "gpu-progress-bg"
+    :width 28
+    :height 28))
+
+;; Foreground circular progress (white, dynamic GPU percentage)
+(defwidget gpu-progress-fg []
+  (circular-progress
+    :value {gpu_percent}
+    :thickness 3
+    :class "gpu-progress-fg"
+    :width 28
+    :height 28))
+
+;; GPU icon widget
+(defwidget gpu-icon []
+  (label :class "gpu-icon"
+         :text " "))
+
+;; Main GPU widget combining all elements
+(defwidget usage-widget-gpu []
+  (overlay
+    (gpu-progress-bg)
+    (gpu-progress-fg)
+    (gpu-icon)))

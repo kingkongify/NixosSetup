@@ -1,0 +1,14 @@
+;; Middle Bar Section - Basic Layout
+(include "midbar/time&date.yuck")
+(defpoll time :interval "0.5s" "bash -lc '/home/kingkongify/.config/eww/scripts/time.sh'" )
+(defwidget midbar []
+  (box :class "midbar-container"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    
+    ;; Time display
+    (time-and-date)))
+
+
+               

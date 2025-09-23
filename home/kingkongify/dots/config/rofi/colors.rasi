@@ -1,0 +1,49 @@
+
+* {
+    primary: #66537A;
+    primary-fixed: #834A8C;
+    primary-fixed-dim: #66537A;
+    on-primary: #0c0f19;
+    on-primary-fixed: #0c0f19;
+    on-primary-fixed-variant: #0c0f19;
+    primary-container: #834A8C;
+    on-primary-container: #0c0f19;
+    secondary: #6D618A;
+    secondary-fixed: #C134AE;
+    secondary-fixed-dim: #6D618A;
+    on-secondary: #0c0f19;
+    on-secondary-fixed: #0c0f19;
+    on-secondary-fixed-variant: #0c0f19;
+    secondary-container: #C134AE;
+    on-secondary-container: #0c0f19;
+    tertiary: #6D3485;
+    tertiary-fixed: #834A8C;
+    tertiary-fixed-dim: #6D3485;
+    on-tertiary: #0c0f19;
+    on-tertiary-fixed: #0c0f19;
+    on-tertiary-fixed-variant: #0c0f19;
+    tertiary-container: #834A8C;
+    on-tertiary-container: #0c0f19;
+    error: #4D4B6E;
+    on-error: #c1aec4;
+    error-container: #4D4B6E;
+    on-error-container: #c1aec4;
+    surface: #0c0f19;
+    on-surface: #c1aec4;
+    on-surface-variant: #c1aec4;
+    outline: #877989;
+    outline-variant: #c1aec4;
+    shadow: #000000;
+    scrim: #000000;
+    inverse-surface: #c1aec4;
+    inverse-on-surface: #0c0f19;
+    inverse-primary: #6D618A;
+    surface-dim: #0c0f19;
+    surface-bright: #c1aec4;
+    surface-container-lowest: #0c0f19;
+    surface-container-low: #0c0f19;
+    surface-container: #0c0f19;
+    surface-container-high: #c1aec4;
+    surface-container-highest: #c1aec4;
+}
+

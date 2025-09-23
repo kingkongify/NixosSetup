@@ -1,0 +1,32 @@
+;; RAM Widget - circular progress with icon
+(defpoll ram_percent :interval "0.5s" "bash -lc '/home/kingkongify/.config/eww/scripts/system-stats/ram.sh'" )
+
+;; Background circular progress (gray, static 100%)
+(defwidget ram-progress-bg []
+  (circular-progress
+    :value 100
+    :thickness 3
+    :class "ram-progress-bg"
+    :width 28
+    :height 28))
+
+;; Foreground circular progress (white, dynamic RAM percentage)
+(defwidget ram-progress-fg []
+  (circular-progress
+    :value {ram_percent}
+    :thickness 3
+    :class "ram-progress-fg"
+    :width 28
+    :height 28))
+
+;; RAM icon widget
+(defwidget ram-icon []
+  (label :class "ram-icon"
+         :text " "))
+
+;; Main RAM widget combining all elements
+(defwidget usage-widget-ram []
+  (overlay
+    (ram-progress-bg)
+    (ram-progress-fg)
+    (ram-icon)))

@@ -1,0 +1,124 @@
+{
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+
+    "modules-left": [
+        "custom/archlogo",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/power"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "custom/cava",
+        "cpu",
+        "memory",
+        "tray"
+    ],
+
+    "custom/archlogo": {
+        "format": "󰣇",
+            "on-click": "kitty --title FastfetchTerm -e sh -c 'fastfetch; exec zsh'",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+           "1": "󰈹",      // browser
+           "2": "",      // music
+           "3": "",      // terminal
+           "4": "󰚗",      // code
+           "5": "󰊴",      // gaming or misc
+        "default": "",
+        "active": "",
+        "empty": "",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "tooltip": true,
+        "tooltip-format": "Switch workspace"
+
+    },
+       "persistent-workspaces": {
+           "*": [1, 2, 3, 4, 5]
+       }
+    },
+
+    "hyprland/window": {
+       "format": "{title}",
+       "max-length": 30,
+       "empty": "Desktop",
+       "on-click": "rofi -show drun"
+    },
+
+    "clock": {
+        "format": "{:%I:%M:%S %p}",
+        "interval": 1,
+        "calendar": {
+            "format": {
+                "today": "<span color='#fAfBfC'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": " {volume}%",
+        "format-muted": " Muted",
+        "scroll-step": 5
+    },
+
+    "cava": {
+        //"cava_config": "/home/kingkongify/.config/cava/cava.conf",
+        "framerate": 30,
+        "autosens": 1,
+        "sensitivity": 100,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
+
+"cpu": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "CPU: {usage}%",
+    "on-click": "btop"
+},
+
+
+"memory": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "RAM: {}%",
+    "interval": 2,
+    "on-click": "btop"
+},
+
+ 
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    }
+}

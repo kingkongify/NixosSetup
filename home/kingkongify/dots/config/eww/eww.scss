@@ -1,0 +1,212 @@
+$font: "Iosevka Nerd Font";
+$rad: 0px 0px 10px 10px;
+//rgba(40,35,50,1)
+//rgba(104,93,113,25)
+
+* {
+  all:unset;
+}
+
+// Section-specific styles
+@import "/home/kingkongify/.cache/wal/colors.scss";
+@import "styles/_animations.scss";
+
+tooltip {
+  font-family: $font;
+  color: $foreground;
+  background-color: $color0;
+}
+
+.bar {
+  background-color: $color0;
+  border-radius: 0px 0px 20px 20px;
+  padding: 2px 5px 2px 5px;
+}
+
+.leftbar-container {
+  background-color: $background;
+  border-radius: 0px 0px 20px 20px;
+  padding: 2px 5px 2px 5px;
+}
+
+.midbar-container {
+  background-color: $background;
+  border-radius: 20px 20px 20px 20px;
+  padding: 2px 5px 2px 5px;
+}
+
+.rightbar-container {
+  background-color: $background;
+  border-radius: 0px 0px 20px 20px;
+  padding: 2px 5px 2px 5px;
+}
+
+
+//################
+//### LEFT BAR ###
+//################
+
+.arch-logo {
+  font-size: 25px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $color1;
+  padding: 0px 20px 0px 5px;
+}
+
+
+.workspaces {
+  font-size: 15px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $color1;
+  padding: 2px 10px 2px 10px;
+}
+
+.workspace {
+  font-size: 15px;
+  font-family: $font;
+  border-radius: 10px 10px 10px 10px;
+  background-color: $color2;
+  padding: 0px 12px 0px 12px;
+}
+
+.current-app {
+  font-size: 10px;
+  font-family: $font;
+  font-weight: 500;
+  border-radius: 0px 0px 0px 00px;
+  background-color: $color1;
+  padding: 0px 12px 0px 12px;
+}
+
+.current-workspace {
+  font-size: 13px;
+  font-family: $font;
+  font-weight: 700;
+  border-radius: 0px 0px 10px 10px;
+  background-color: $color1;
+  padding: 0px 10px 0px 12px;
+}
+
+
+//###############
+//### MID BAR ###
+//###############
+
+.time {
+  font-size: 15px;
+  font-family: $font;
+  font-weight: 500;
+  border-radius: $rad;
+  background-color: $color1;
+  padding: 0px 12px 0px 12px;
+}
+
+//#################
+//### RIGHT BAR ###
+//#################
+
+.system-monitor {
+  font-size: 16px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $color1;
+  padding: 0px 12px 0px 12px;
+}
+
+.usage-widget-cpu{
+  font-size: 16px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $background;
+  padding: 0px 15px 0px 10px;
+}
+
+.progress-fill-cpu{
+  font-size: 16px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $background;
+  padding: 0px 12px 0px 12px;
+}
+
+.usage-widget-ram{
+  font-size: 16px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $background;
+  padding: 0px 15px 0px 10px;
+}
+
+.progress-fill-ram{
+  font-size: 16px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $background;
+  padding: 0px 12px 0px 12px;
+}
+
+.audio-section{
+  font-size: 16px;
+  font-family: $font;
+  border-radius: $rad;
+  background-color: $background;
+  padding: 0px 12px 0px 12px;
+}
+
+// CPU Circular Progress Styles
+.cpu-progress-bg {
+  color: $background;
+}
+
+.cpu-progress-fg {
+  color: $foreground;
+}
+
+.cpu-icon {
+  font-size: 14px;
+  color: $foreground;
+  background: transparent;
+}
+
+// RAM Circular Progress Styles
+.ram-progress-bg {
+  color: $background;
+}
+
+.ram-progress-fg {
+  color: $foreground;
+}
+
+.ram-icon {
+  font-size: 14px;
+  color: $foreground;
+  background: transparent;
+}
+
+// GPU Circular Progress Styles
+// GPU Circular Progress Styles
+.gpu-progress-bg {
+  color: $background;
+}
+
+.gpu-progress-fg {
+  color: $foreground;
+}
+
+.gpu-icon {
+  font-size: 14px;
+  color: $foreground;
+  background: transparent;
+}
+
+//MISC
+
+.activate-linux {
+  color: rgba(250, 250, 250, 0.5);
+  &.background {
+    background: none;
+  }
+}
+

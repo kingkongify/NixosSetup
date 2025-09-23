@@ -1,0 +1,21 @@
+;; Left Bar Section - Basic Layout
+(include "leftbar/arch-button.yuck")
+(include "leftbar/active-window.yuck")
+(include "leftbar/workspace-switcher.yuck")
+(defwidget leftbar []
+  (box :class "leftbar-container"
+       :orientation "h"
+       :space-evenly false
+       :spacing 12
+       :halign "start"
+    
+    ;; Arch logo button
+    (arch-button)
+    
+    ;; Current active app + workspace (stacked)
+    (box :orientation "v" :spacing 0
+      (active-app)
+      (active-workspace))
+
+    ;; Workspaces switcher
+    (workspace-switcher)))

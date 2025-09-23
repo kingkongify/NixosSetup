@@ -1,0 +1,17 @@
+(defpoll active_app :interval "0.5s" "~/.config/eww/scripts/current-app.sh")
+(defpoll active_ws :interval "1s" "~/.config/eww/scripts/workspaces.sh current")
+
+(defwidget active-app []
+  (eventbox :class "current-app"
+            :tooltip "Open Launcher"
+            :cursor "pointer"
+            :onclick "rofi -show drun &"
+    (label :halign "start" :text "‎   ${active_app}  ")))
+
+(defwidget active-workspace []
+  (eventbox :class "current-workspace"
+            :tooltip "Open Launcher"
+            :cursor "pointer"
+            :onclick "rofi -show drun &"
+    (label :halign "start" :text "‎  Workspace ${active_ws}  ")))
+

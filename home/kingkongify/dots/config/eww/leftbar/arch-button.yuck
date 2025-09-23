@@ -1,0 +1,6 @@
+(defwidget arch-button []
+  (eventbox :class "arch-logo"
+            :tooltip "Open Terminal"
+            :cursor "pointer"
+            :onclick "~/.config/eww/scripts/arch-terminal-launch.sh"
+    (label :text "‎ 󰣇  ")))

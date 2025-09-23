@@ -1,0 +1,4 @@
+(defwidget time-and-date []
+  (eventbox :class "time"
+    (label :halign "start" :text "‎  ${time}  ‎")))
+

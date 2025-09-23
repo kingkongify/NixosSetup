@@ -1,0 +1,59 @@
+;; Minimal EWW Configuration - Just to display the bar structure
+;; Import section layouts
+(include "leftbar/leftbar.yuck")
+(include "midbar/midbar.yuck") 
+(include "rightbar/rightbar.yuck")
+
+;;MISC
+
+(defwidget activate-linux []
+  (box
+    :orientation "v"
+    :halign "start"
+    :valign "start"
+    (label :xalign 0 :markup "<span font_size=\"large\">Activate Linux</span>")
+    (label :xalign 0 :text "Go to Settings to activate Linux")))
+
+(defwindow activate-linux
+  :monitor 0
+  :stacking "fg"
+  :geometry (geometry :x "8px" :y "32px" :width "250px" :anchor "bottom right")
+  (activate-linux))
+
+;; Main bar window
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :exclusive true
+  :focusable false
+    :geometry (geometry :x "0%"
+                     :y "0%"
+                     :width "99%"
+                     :height "35px"
+                     :anchor "top center")
+  (main-bar))
+
+;; Main bar layout combining all sections
+(defwidget main-bar []
+  (box :class "main-bar"
+       :orientation "H"
+       :space-evenly true
+    ;; Left section
+    (box :class "bar-section left-section"
+         :halign "start"
+         :hexpand true
+      (leftbar))
+    
+    ;; Middle section  
+    (box :class "bar-section middle-section"
+         :halign "center"
+      (midbar))
+    
+    ;; Right section
+    (box :class "bar-section right-section"
+         :halign "end"
+         :space-evenly false
+      (rightbar))))
+
+

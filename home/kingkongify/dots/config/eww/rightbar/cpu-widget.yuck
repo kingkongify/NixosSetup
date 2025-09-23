@@ -1,0 +1,35 @@
+;; CPU Widget - circular progress with icon
+(defpoll cpu_percent :interval "0.5s" "bash -lc '/home/kingkongify/.config/eww/scripts/system-stats/cpu.sh'" )
+
+;; Background circular progress (gray, static 100%)
+(defwidget cpu-progress-bg []
+  (circular-progress
+    :value 100
+    :thickness 3
+    :class "cpu-progress-bg"
+    :width 28
+    :height 28))
+
+;; Foreground circular progress (white, dynamic CPU percentage)
+(defwidget cpu-progress-fg []
+  (circular-progress
+    :value {cpu_percent}
+    :thickness 3
+    :class "cpu-progress-fg"
+    :width 28
+    :height 28))
+
+;; CPU icon widget
+(defwidget cpu-icon []
+  (label :class "cpu-icon"
+         :text " "))
+     
+
+;; Main CPU widget combining all elements
+(defwidget usage-widget-cpu []
+  (overlay
+    (cpu-progress-bg)
+    (cpu-progress-fg)
+    (cpu-icon)))
+
+

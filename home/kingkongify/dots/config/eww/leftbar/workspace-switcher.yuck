@@ -1,0 +1,16 @@
+(defpoll ws-current :interval "0.2s" "~/.config/eww/scripts/workspaces.sh current")
+
+(defwidget workspace-button [id]
+  (eventbox :class "workspace"
+            :cursor "pointer"
+            :tooltip "Switch to workspace ${id}"
+            :onclick "~/.config/eww/scripts/workspaces.sh switch ${id}"
+    (label :text "${id}")))
+
+(defwidget workspace-switcher []
+  (box :class "workspaces"
+       :spacing 2
+    (for n in "[1,2,3,4,5]"
+      (box :class "workspace ${n == ws-current ? 'active' : ''}"
+        (workspace-button :id n)))))
+

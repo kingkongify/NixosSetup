@@ -1,0 +1,25 @@
+;; Updated Right Bar Section with Enhanced Audio
+(include "rightbar/cpu-widget.yuck")
+(include "rightbar/ram-widget.yuck") 
+(include "rightbar/gpu-widget.yuck")
+
+(defwidget rightbar []
+  (box :class "rightbar-container"
+       :orientation "h"
+       :space-evenly false
+       :spacing 12
+       :halign "end"
+    
+    ;; System monitor section
+    (box :class "system-monitor"
+         :spacing 8
+         :tooltip "System Usage"
+      
+      ;; CPU usage widget
+      (usage-widget-cpu)
+      
+      ;; RAM usage widget  
+      (usage-widget-ram)
+      
+      ;; GPU usage widget
+      (usage-widget-gpu))))
