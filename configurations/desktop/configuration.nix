@@ -29,6 +29,5 @@
     ++ (packages.utilities pkgs)
     ++ (packages.hyprland pkgs)
     ++ (packages.dev pkgs)
-    ++ (packages.flatpak pkgs); # your new pkgs-flatpak.nix
 
 }
