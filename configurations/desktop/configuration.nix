@@ -31,7 +31,4 @@
     ++ (packages.dev pkgs)
     ++ (packages.flatpak pkgs); # your new pkgs-flatpak.nix
 
-  # Optional: machine-specific settings
-  networking.hostName = "desktop-nixos";
-
 }
