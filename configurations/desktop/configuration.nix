@@ -28,6 +28,6 @@
     ++ (packages.desktop pkgs)
     ++ (packages.utilities pkgs)
     ++ (packages.hyprland pkgs)
-    ++ (packages.dev pkgs)
+    ++ (packages.dev pkgs);
 
 }
