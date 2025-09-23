@@ -1,32 +1,21 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-{
-  # --- GPU Drivers (AMD) ---
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      mesa
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
-  };
-  hardware.enableRedistributableFirmware = true;
+with pkgs;
 
-  # --- Bluetooth ---
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+[
+  # GPU / Vulkan / user tooling
+  mesa
+  vulkan-tools
 
-  # --- Audio (PipeWire stack) ---
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
+  # AMD vendor ICD (optional; name may differ depending on nixpkgs version)
+  amdvlk
 
-  # --- Power management ---
-  services.upower.enable = false;
-}
+  # PipeWire & helpers (user-space)
+  pipewire
+  pipewire-pulse
+  wireplumber
+
+  # Bluetooth user tools
+  bluez
+  bluez-utils
+]
