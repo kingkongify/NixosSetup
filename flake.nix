@@ -43,6 +43,7 @@
           ./modules/global/input-display.nix
           ./modules/global/hyprland.nix
           ./modules/global/flatpak.nix
+          ./modules/global/core.nix
 
           ## Desktop-specific modules
           ./modules/desktop/filesystems.nix
@@ -68,6 +69,7 @@
           ./modules/global/input-display.nix
           ./modules/global/hyprland.nix
           ./modules/global/flatpak.nix
+          ./modules/global/core.nix
 
           ## Laptop-specific modules
           ./modules/laptop/filesystems.nix
