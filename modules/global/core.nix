@@ -1,4 +1,3 @@
-# modules/global/core.nix
 { config, lib, pkgs, ... }:
 
 with lib;
@@ -7,11 +6,11 @@ with lib;
   # Enable firmware for devices that need redistributable blobs
   hardware.enableRedistributableFirmware = true;
 
-  # --- GPU / Graphics ---
-  hardware.opengl = {
+  # --- GPU / Graphics (AMD / Mesa / Vulkan) ---
+  hardware.graphics = {
     enable = true;
-    # Provide mesa as extra packages for userspace tooling if needed:
-    extraPackages = with pkgs; [ mesa vulkan-tools ];
+    extraPackages = with pkgs; [ mesa vulkan-tools libva libva-utils ];
+    extraPackages32 = with pkgs; [ driversi686Linux.mesa driversi686Linux.vulkan-tools ];
   };
 
   # --- Bluetooth ---
@@ -25,14 +24,11 @@ with lib;
       enable = true;
       support32Bit = true;
     };
-    pulse = {
-      enable = true;
-    };
-    jack = {
-      enable = true;
-    };
+    pulse.enable = true;
+    jack.enable = true;
   };
 
+  # Optional system-wide packages
   environment.systemPackages = with pkgs; [
     wireplumber
   ];

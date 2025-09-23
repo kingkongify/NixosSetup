@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 
 OVPN_DIR=~/vpn/
 AUTH_FILE=~/vpn/protonvpn-auth.txt

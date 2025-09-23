@@ -1,12 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-{
-environment.systemPackages = with pkgs; [
-  firefox
-  obs-studio
-  mcpelauncher-ui-qt
-  gimp3-with-plugins
-  vesktop
-];
-
-}
+[
+  pkgs.firefox
+  pkgs.obs-studio
+  pkgs.mcpelauncher-ui-qt
+  pkgs.gimp3-with-plugins
+  pkgs.vesktop
+]

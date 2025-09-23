@@ -1,21 +1,21 @@
+# packages/core.nix
 { pkgs, ... }:
 
-with pkgs;
-
 [
-  # GPU / Vulkan / user tooling
-  mesa
-  vulkan-tools
+  # Graphics Related
+  pkgs.mesa
+  pkgs.vulkan-tools
+  pkgs.amdvlk
 
-  # AMD vendor ICD (optional; name may differ depending on nixpkgs version)
-  amdvlk
-
+  # System Related
+  pkgs.home-manager
+  
   # PipeWire & helpers (user-space)
-  pipewire
-  pipewire-pulse
-  wireplumber
+  pkgs.pipewire
+  pkgs.wireplumber
 
   # Bluetooth user tools
-  bluez
-  bluez-utils
+  pkgs.bluez
+  pkgs.bluez-tools
+  pkgs.bluez-alsa
 ]

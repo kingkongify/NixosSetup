@@ -17,12 +17,16 @@
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }:
   let
     system = "x86_64-linux";
+
+    ## Common module to enable flakes + nix-command
+nixSettingsModule = { ... }: {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+};
   in
   {
     ## Reusable package sets
     packages = {
       core      = pkgs: import ./packages/core.nix { inherit pkgs; };
-      system    = pkgs: import ./packages/system.nix { inherit pkgs; };
       desktop   = pkgs: import ./packages/desktop.nix { inherit pkgs; };
       utilities = pkgs: import ./packages/utilities.nix { inherit pkgs; };
       dev       = pkgs: import ./packages/dev.nix { inherit pkgs; };
@@ -44,6 +48,7 @@
           ./modules/global/hyprland.nix
           ./modules/global/flatpak.nix
           ./modules/global/core.nix
+          ./modules/global/fonts.nix
 
           ## Desktop-specific modules
           ./modules/desktop/filesystems.nix
@@ -52,6 +57,9 @@
 
           ## Home Manager integration
           home-manager.nixosModules.home-manager
+
+          ## Enable flakes + nix-command globally
+          nixSettingsModule
         ];
 
         specialArgs = { inherit (self) packages; };
@@ -70,6 +78,7 @@
           ./modules/global/hyprland.nix
           ./modules/global/flatpak.nix
           ./modules/global/core.nix
+          ./modules/global/fonts.nix
 
           ## Laptop-specific modules
           ./modules/laptop/filesystems.nix
@@ -78,6 +87,9 @@
 
           ## Home Manager integration
           home-manager.nixosModules.home-manager
+
+          ## Enable flakes + nix-command globally
+          nixSettingsModule
         ];
 
         specialArgs = { inherit (self) packages; };
@@ -85,14 +97,14 @@
     };
 
     ## Home Manager user config (dotfiles + flatpak apps)
-    homeConfigurations = {
-      kingkongify = home-manager.lib.homeConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          ./home/kingkongify/home.nix
-          ./home/kingkongify/flatpak-apps.nix
-        ];
-      };
-    };
+homeConfigurations = {
+  kingkongify = home-manager.lib.homeManagerConfiguration {
+    pkgs = nixpkgs.legacyPackages.${system};
+    modules = [
+      ./home/kingkongify/home.nix
+    ];
+  };
+};
+
   };
 }

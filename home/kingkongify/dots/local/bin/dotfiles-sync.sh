@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 
 # Define target repo folder
 DOTFILES_DIR=~/dotfiles
