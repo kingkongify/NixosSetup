@@ -30,7 +30,7 @@
     experimental-features = nix-command flakes
   '';
 
-  ## System-wide packages
+  ## System-wide packages (Concat)
   environment.systemPackages = with pkgs; [
     home-manager
   ] ++ (packages.core pkgs)
