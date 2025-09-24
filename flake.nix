@@ -1,5 +1,5 @@
 {
-  description = "NixOS flake for desktop and laptop (unstable), with Home Manager + Flatpak";
+  description = "NixOS flake for desktop and laptop (unstable), with Home Manager"
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -96,7 +96,7 @@ nixSettingsModule = { ... }: {
       };
     };
 
-    ## Home Manager user config (dotfiles + flatpak apps)
+    ## Home Manager user config 
 homeConfigurations = {
   kingkongify = home-manager.lib.homeManagerConfiguration {
     pkgs = nixpkgs.legacyPackages.${system};
