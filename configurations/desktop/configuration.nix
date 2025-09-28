@@ -1,9 +1,9 @@
 { config, pkgs, packages, inputs, ... }:
 
 {
-
   #Experimental
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   # Import hardware config (machine-specific)
   imports = [
     ./hardware-configuration.nix
@@ -19,7 +19,6 @@
     ../../modules/global/input-display.nix
     ../../modules/global/hyprland.nix
     ../../modules/global/flatpak.nix
-    ../../modules/global/fonts.nix
   ];
 
   # System state version
@@ -30,12 +29,14 @@
     experimental-features = nix-command flakes
   '';
 
-  ## System-wide packages (Concat)
+  ## System-wide packages (ONLY system essentials)
   environment.systemPackages = with pkgs; [
+    # Only essential system tools
     home-manager
-  ] ++ (packages.core pkgs)
-    ++ (packages.desktop pkgs)
-    ++ (packages.utilities pkgs)
-    ++ (packages.hyprland pkgs)
-    ++ (packages.dev pkgs);
+  ] ++ (packages.systemCore pkgs)
+    ++ (packages.hyprlandSystem pkgs)
+    ++ (packages.fonts pkgs);
+
+  # Enable system fonts (this is needed for font packages to work properly)
+  fonts.enableDefaultPackages = true;
 }

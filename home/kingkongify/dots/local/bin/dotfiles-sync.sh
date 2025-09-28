@@ -7,7 +7,7 @@ DOTFILES_DIR=~/dotfiles
 # Make sure it exists
 mkdir -p "$DOTFILES_DIR"
 
-echo "📦 Syncing dotfiles to $DOTFILES_DIR ..."
+echo "Syncing dotfiles to $DOTFILES_DIR ..."
 
 # Copy scripts
 mkdir -p "$DOTFILES_DIR/local/bin"
@@ -30,7 +30,7 @@ cp -u ~/.zshrc "$DOTFILES_DIR/"
 # Git stuff
 cd "$DOTFILES_DIR" || exit
 git add .
-git commit -m "📦 Auto backup on $(date '+%Y-%m-%d %H:%M:%S')"
+git commit -m "Auto backup on $(date '+%Y-%m-%d %H:%M:%S')"
 git push
 
-echo "✅ Dotfiles synced and pushed to GitHub!"
+echo "Dotfiles synced"

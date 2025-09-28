@@ -1,0 +1,29 @@
+{
+  "defaults": {
+    "default": 0.85,
+    "hex_mode": false
+  },
+  "background": 0.70,
+  "foreground": 1,
+  "cursor": 1,
+  "color0": 0,
+  "color1": 0.15,
+  "color2": 1,
+  "color3": 1,
+  "color4": 1,
+  "color5": 1,
+  "color6": 1,
+  "color7": 1,
+  "color8": 1,
+  "color9": 1,
+  "color10": 1,
+  "color11": 1,
+  "color12": 1,
+  "color13": 1,
+  "color14": 1,
+  "color15": 1,
+  "active_border": 0.8,
+  "inactive_border": 0.667,
+  "group_border": 0.867,
+  "group_border_active": 0.933
+}

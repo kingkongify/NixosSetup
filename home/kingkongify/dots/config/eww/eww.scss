@@ -1,82 +1,89 @@
 $font: "Iosevka Nerd Font";
-$rad: 0px 0px 10px 10px;
-//rgba(40,35,50,1)
-//rgba(104,93,113,25)
+$rad: 10px 10px 10px 10px;
+$text-shadow: 0px 0px 2px rgba(204, 204, 204, 0.885);
+$container-shadow: 1px 1px 2px 1px rgba(61, 61, 61, 0.885);
 
 * {
-  all:unset;
+  all: unset;
 }
 
 // Section-specific styles
-@import "/home/kingkongify/.cache/wal/colors.scss";
+@import "styles/_colors.scss";
 @import "styles/_animations.scss";
 
 tooltip {
   font-family: $font;
-  color: $foreground;
-  background-color: $color0;
+  color: $color7-rgba;
+  background-color: $background-rgba;
 }
 
 .bar {
-  background-color: $color0;
-  border-radius: 0px 0px 20px 20px;
-  padding: 2px 5px 2px 5px;
+  background-color: $color0-rgba;
+  border-radius: 10px 10px 10px 10px;
+  padding: 2px 20px 2px 20px;
 }
 
 .leftbar-container {
-  background-color: $background;
-  border-radius: 0px 0px 20px 20px;
-  padding: 2px 5px 2px 5px;
+  background-color: $background-rgba;
+  border-radius: 10px 10px 10px 10px;
+  padding: 1px 5px 2px 5px;
+  box-shadow: $container-shadow;
 }
 
 .midbar-container {
-  background-color: $background;
-  border-radius: 20px 20px 20px 20px;
-  padding: 2px 5px 2px 5px;
+  background-color: $background-rgba;
+  border-radius: 10px 10px 10px 10px;
+  padding: 1px 5px 2px 5px;
+  box-shadow: $container-shadow;
 }
 
 .rightbar-container {
-  background-color: $background;
-  border-radius: 0px 0px 20px 20px;
-  padding: 2px 5px 2px 5px;
+  background-color: $background-rgba;
+  border-radius: 10px 10px 10px 10px;
+  padding: 1px 5px 2px 5px;
+  box-shadow: $container-shadow;
 }
-
 
 //################
 //### LEFT BAR ###
 //################
 
-.arch-logo {
+.os-logo {
   font-size: 25px;
   font-family: $font;
+  color: $color7-rgba;
   border-radius: $rad;
-  background-color: $color1;
+  text-shadow: 0px 0px 2px rgb(6, 114, 255);
+  background-color: $color1-rgba;
   padding: 0px 20px 0px 5px;
 }
-
 
 .workspaces {
   font-size: 15px;
   font-family: $font;
   border-radius: $rad;
-  background-color: $color1;
+  color: $color7-rgba;
+  text-shadow: $text-shadow;
+  background-color: $color1-rgba;
   padding: 2px 10px 2px 10px;
 }
 
 .workspace {
   font-size: 15px;
   font-family: $font;
-  border-radius: 10px 10px 10px 10px;
-  background-color: $color2;
+  border-radius: 10px;
+  background-color: $color2-rgba;
   padding: 0px 12px 0px 12px;
 }
 
 .current-app {
   font-size: 10px;
   font-family: $font;
-  font-weight: 500;
-  border-radius: 0px 0px 0px 00px;
-  background-color: $color1;
+  font-weight: 600;
+  text-shadow: $text-shadow;
+  color: $color7-rgba;
+  border-radius: 10px 10px 00px 00px;
+  background-color: $color1-rgba;
   padding: 0px 12px 0px 12px;
 }
 
@@ -84,22 +91,25 @@ tooltip {
   font-size: 13px;
   font-family: $font;
   font-weight: 700;
+  color: $color7-rgba;
+  text-shadow: $text-shadow;
   border-radius: 0px 0px 10px 10px;
-  background-color: $color1;
+  background-color: $color1-rgba;
   padding: 0px 10px 0px 12px;
 }
-
 
 //###############
 //### MID BAR ###
 //###############
 
 .time {
-  font-size: 15px;
+  font-size: 13px;
   font-family: $font;
-  font-weight: 500;
+  font-weight: 600;
+  color: $color7-rgba;
+  text-shadow: $text-shadow;
   border-radius: $rad;
-  background-color: $color1;
+  background-color: $color1-rgba;
   padding: 0px 12px 0px 12px;
 }
 
@@ -111,102 +121,105 @@ tooltip {
   font-size: 16px;
   font-family: $font;
   border-radius: $rad;
-  background-color: $color1;
+  color: $color7-rgba;
+  background-color: $color1-rgba;
   padding: 0px 12px 0px 12px;
 }
 
-.usage-widget-cpu{
+.usage-widget-cpu {
   font-size: 16px;
   font-family: $font;
+  color: $color7-rgba;
   border-radius: $rad;
-  background-color: $background;
+  background-color: $background-rgba;
   padding: 0px 15px 0px 10px;
 }
 
-.progress-fill-cpu{
+.progress-fill-cpu {
   font-size: 16px;
   font-family: $font;
   border-radius: $rad;
-  background-color: $background;
+  background-color: $background-rgba;
   padding: 0px 12px 0px 12px;
 }
 
-.usage-widget-ram{
+.usage-widget-ram {
   font-size: 16px;
   font-family: $font;
   border-radius: $rad;
-  background-color: $background;
+  background-color: $background-rgba;
   padding: 0px 15px 0px 10px;
 }
 
-.progress-fill-ram{
+.progress-fill-ram {
   font-size: 16px;
   font-family: $font;
   border-radius: $rad;
-  background-color: $background;
+  background-color: $background-rgba;
   padding: 0px 12px 0px 12px;
 }
 
-.audio-section{
+.audio-section {
   font-size: 16px;
   font-family: $font;
   border-radius: $rad;
-  background-color: $background;
+  text-shadow: $text-shadow;
+  background-color: $background-rgba;
   padding: 0px 12px 0px 12px;
 }
 
 // CPU Circular Progress Styles
 .cpu-progress-bg {
-  color: $background;
+  color: $background-rgba;
 }
 
 .cpu-progress-fg {
-  color: $foreground;
+  color: $foreground-rgba;
 }
 
 .cpu-icon {
   font-size: 14px;
-  color: $foreground;
+  color: $color7-rgba;
+  text-shadow: $text-shadow;
   background: transparent;
 }
 
 // RAM Circular Progress Styles
 .ram-progress-bg {
-  color: $background;
+  color: $background-rgba;
 }
 
 .ram-progress-fg {
-  color: $foreground;
+  color: $foreground-rgba;
 }
 
 .ram-icon {
   font-size: 14px;
-  color: $foreground;
+  text-shadow: $text-shadow;
+  color: $color7-rgba;
   background: transparent;
 }
 
 // GPU Circular Progress Styles
-// GPU Circular Progress Styles
 .gpu-progress-bg {
-  color: $background;
+  color: $background-rgba;
 }
 
 .gpu-progress-fg {
-  color: $foreground;
+  color: $foreground-rgba;
 }
 
 .gpu-icon {
   font-size: 14px;
-  color: $foreground;
+  color: $color7-rgba;
+  text-shadow: $text-shadow;
   background: transparent;
 }
 
-//MISC
-
+// MISC
 .activate-linux {
   color: rgba(250, 250, 250, 0.5);
   &.background {
     background: none;
   }
 }
-

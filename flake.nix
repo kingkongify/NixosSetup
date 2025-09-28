@@ -1,5 +1,5 @@
 {
-  description = "NixOS flake for desktop and laptop (unstable), with Home Manager"
+  description = "NixOS flake for desktop and laptop (unstable), with Home Manager + Flatpak";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -19,18 +19,22 @@
     system = "x86_64-linux";
 
     ## Common module to enable flakes + nix-command
-nixSettingsModule = { ... }: {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-};
+    nixSettingsModule = { ... }: {
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    };
   in
   {
-    ## Reusable package sets
+    ## System-level packages (only essential drivers and system services)
     packages = {
-      core      = pkgs: import ./packages/core.nix { inherit pkgs; };
-      desktop   = pkgs: import ./packages/desktop.nix { inherit pkgs; };
-      utilities = pkgs: import ./packages/utilities.nix { inherit pkgs; };
-      dev       = pkgs: import ./packages/dev.nix { inherit pkgs; };
-      hyprland  = pkgs: import ./packages/pkgs-hyprland.nix { inherit pkgs; };
+      systemCore     = pkgs: import ./packages/system-core.nix { inherit pkgs; };
+      hyprlandSystem = pkgs: import ./packages/hyprland-system.nix { inherit pkgs; };
+      fonts          = pkgs: import ./packages/fonts.nix { inherit pkgs; };
+      
+      ## User-level packages (for home-manager)
+      userDesktop    = pkgs: import ./packages/user-desktop.nix { inherit pkgs; };
+      userUtilities  = pkgs: import ./packages/user-utilities.nix { inherit pkgs; };
+      userHyprland   = pkgs: import ./packages/user-hyprland.nix { inherit pkgs; };
+      userDev        = pkgs: import ./packages/user-dev.nix { inherit pkgs; };
     };
 
     ## NixOS system configurations
@@ -48,7 +52,6 @@ nixSettingsModule = { ... }: {
           ./modules/global/hyprland.nix
           ./modules/global/flatpak.nix
           ./modules/global/core.nix
-          ./modules/global/fonts.nix
 
           ## Desktop-specific modules
           ./modules/desktop/filesystems.nix
@@ -57,6 +60,15 @@ nixSettingsModule = { ... }: {
 
           ## Home Manager integration
           home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.kingkongify = import ./home/kingkongify/home.nix;
+            home-manager.extraSpecialArgs = { 
+              inherit (self) packages; 
+              inherit nix-flatpak;
+            };
+          }
 
           ## Enable flakes + nix-command globally
           nixSettingsModule
@@ -78,7 +90,6 @@ nixSettingsModule = { ... }: {
           ./modules/global/hyprland.nix
           ./modules/global/flatpak.nix
           ./modules/global/core.nix
-          ./modules/global/fonts.nix
 
           ## Laptop-specific modules
           ./modules/laptop/filesystems.nix
@@ -87,6 +98,15 @@ nixSettingsModule = { ... }: {
 
           ## Home Manager integration
           home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.kingkongify = import ./home/kingkongify/home.nix;
+            home-manager.extraSpecialArgs = { 
+              inherit (self) packages; 
+              inherit nix-flatpak;
+            };
+          }
 
           ## Enable flakes + nix-command globally
           nixSettingsModule
@@ -95,16 +115,5 @@ nixSettingsModule = { ... }: {
         specialArgs = { inherit (self) packages; };
       };
     };
-
-    ## Home Manager user config 
-homeConfigurations = {
-  kingkongify = home-manager.lib.homeManagerConfiguration {
-    pkgs = nixpkgs.legacyPackages.${system};
-    modules = [
-      ./home/kingkongify/home.nix
-    ];
-  };
-};
-
   };
 }
