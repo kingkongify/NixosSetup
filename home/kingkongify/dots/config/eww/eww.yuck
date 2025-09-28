@@ -28,9 +28,9 @@
   :exclusive true
   :focusable false
     :geometry (geometry :x "0%"
-                     :y "0%"
+                     :y "0.5%"
                      :width "99%"
-                     :height "35px"
+                     :height "1%"
                      :anchor "top center")
   (main-bar))
 

@@ -42,7 +42,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("~/.local/bin/mpvpywal/mpvshot.jpg", height);
+    background-image:            url("~/.local/bin/wallpapertool/mpvshot.jpg", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }

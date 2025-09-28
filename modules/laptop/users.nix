@@ -13,7 +13,6 @@
       "audio"
       "input"
       "plugdev"
-      "vboxusers"
     ];
   };
 

@@ -1,0 +1,6 @@
+(defwidget os-button []
+  (eventbox :class "os-logo"
+            :tooltip "Open Terminal"
+            :cursor "pointer"
+            :onclick "sh ~/.config/eww/scripts/kitty-terminal-launch.sh"
+    (label :text "‎   ")))

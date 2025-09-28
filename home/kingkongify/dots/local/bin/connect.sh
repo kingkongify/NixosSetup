@@ -6,7 +6,7 @@ AUTH_FILE=~/vpn/protonvpn-auth.txt
 
 # Check auth file
 if [[ ! -f "$AUTH_FILE" ]]; then
-    echo "Auth file not found at $AUTH_FILtE"
+    echo "Auth file not found at $AUTH_FILE"
     exit 1
 fi
 
